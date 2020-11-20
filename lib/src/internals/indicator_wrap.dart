@@ -238,6 +238,11 @@ abstract class RefreshIndicatorState<T extends RefreshIndicator>
     if (mode == RefreshStatus.idle || mode == RefreshStatus.canRefresh) {
       floating = false;
 
+      if (mode == RefreshStatus.canRefresh) {
+        print('--HAPTIC vibrate');
+        HapticFeedback.lightImpact();
+      }
+
       resetValue();
 
       if (mode == RefreshStatus.idle)
